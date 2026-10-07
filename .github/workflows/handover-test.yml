@@ -1,0 +1,9 @@
+name: handover-test
+on: [push, workflow_dispatch]
+jobs:
+  test:
+    runs-on: ravion-handover-test
+    steps:
+      - run: echo one && sleep 20
+      - run: echo two && sleep 20
+      - run: echo three && sleep 20
