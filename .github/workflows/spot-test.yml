@@ -1,0 +1,13 @@
+name: spot-test
+on: workflow_dispatch
+jobs:
+  long:
+    runs-on: ravion-handover-test
+    steps:
+      - run: echo start && sleep 20
+      - run: for i in $(seq 1 120); do echo tick $i; sleep 5; done
+      - run: echo done
+  other:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 300
