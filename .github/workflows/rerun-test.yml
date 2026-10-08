@@ -1,0 +1,16 @@
+name: rerun-test
+on: workflow_dispatch
+jobs:
+  fails:
+    runs-on: ubuntu-latest
+    steps:
+      - run: exit 1
+  slow:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 240
+  after:
+    needs: fails
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo after
