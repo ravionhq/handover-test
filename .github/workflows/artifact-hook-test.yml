@@ -23,6 +23,8 @@ jobs:
     runs-on: ravion-artifact-hook-test
     steps:
       - run: echo "hello from annotations" > hook-test.txt
+      - name: Control step summary (normal step)
+        run: echo "### Control summary written by a normal step" >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@v4
         with:
           name: hook-test-artifact-annotations
