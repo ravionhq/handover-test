@@ -1,0 +1,29 @@
+name: artifact-hook-test
+on: workflow_dispatch
+jobs:
+  plain:
+    runs-on: ravion-artifact-hook-test
+    steps:
+      - run: echo "hello from plain" > hook-test.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hook-test-artifact-plain
+          path: hook-test.txt
+  grouped:
+    needs: plain
+    runs-on: ravion-artifact-hook-test
+    steps:
+      - run: echo "hello from grouped" > hook-test.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hook-test-artifact-grouped
+          path: hook-test.txt
+  annotations:
+    needs: grouped
+    runs-on: ravion-artifact-hook-test
+    steps:
+      - run: echo "hello from annotations" > hook-test.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hook-test-artifact-annotations
+          path: hook-test.txt
