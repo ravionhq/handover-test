@@ -1,7 +1,0 @@
-name: Scale-set spike single job
-on: workflow_dispatch
-jobs:
-  spike:
-    runs-on: "ravion/ee=spike/type=sandbox/cpu=4/memory=16"
-    steps:
-      - run: echo spike
