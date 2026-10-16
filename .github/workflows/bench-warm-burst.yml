@@ -1,0 +1,16 @@
+name: bench-warm burst4
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        required: false
+        default: "x"
+        type: string
+jobs:
+  bench:
+    strategy:
+      matrix:
+        n: [0, 1, 2, 3]
+    runs-on: ravion/ee=devin-nvme-m8id-4xl/type=sandbox/cpu=2/memory=4/id=${{ github.run_id }}-${{ github.run_attempt }}-burst-${{ strategy.job-index }}
+    steps:
+      - run: "true"
