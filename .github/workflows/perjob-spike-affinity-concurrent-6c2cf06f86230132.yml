@@ -1,0 +1,11 @@
+name: Per-job T5 concurrent affinity 6c2cf06f86230132
+on: workflow_dispatch
+jobs:
+  job_a:
+    runs-on: "ravion/ee=spike/type=sandbox/cpu=4/memory=16/id=6c2cf06f86230132-t5c-concurrent-a"
+    steps:
+      - run: sleep 3
+  job_b:
+    runs-on: "ravion/ee=spike/type=sandbox/cpu=4/memory=16/id=6c2cf06f86230132-t5c-concurrent-b"
+    steps:
+      - run: sleep 3
