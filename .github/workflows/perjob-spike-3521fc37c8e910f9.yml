@@ -1,0 +1,16 @@
+name: Per-job single 3521fc37c8e910f9
+on:
+  workflow_dispatch:
+    inputs:
+      label:
+        required: true
+        type: string
+      sleep_seconds:
+        required: false
+        default: "0"
+        type: string
+jobs:
+  spike:
+    runs-on: ${{ inputs.label }}
+    steps:
+      - run: sleep "${{ inputs.sleep_seconds }}"
