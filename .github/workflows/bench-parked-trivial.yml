@@ -1,0 +1,28 @@
+name: bench-parked-trivial
+run-name: bench-parked-trivial ${{ inputs.tag }}
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        required: false
+        default: ""
+      n:
+        required: false
+        default: "1"
+      cpu:
+        required: false
+        default: "2"
+      memory:
+        required: false
+        default: "4"
+      disk_cache:
+        required: false
+        default: "off"
+jobs:
+  parked:
+    strategy:
+      matrix:
+        i: ${{ fromJSON(inputs.n == '4' && '[1,2,3,4]' || inputs.n == '3' && '[1,2,3]' || inputs.n == '2' && '[1,2]' || '[1]') }}
+    runs-on: ravion/ee=ee_3KX1V773NYCtQfuFLdc7vF95M3x/type=sandbox/cpu=${{ inputs.cpu }}/memory=${{ inputs.memory }}/disk=20/disk_cache=${{ inputs.disk_cache }}/id=${{ github.run_id }}-${{ github.run_attempt }}-parked-${{ matrix.i }}
+    steps:
+      - run: "true"
